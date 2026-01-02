@@ -3,7 +3,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: cursive;
-    background-image: url(./picture/ckjk4.jpg);
+    background-image: url(picture/ckjk4.jpg);
     background-size: cover;
     /* background-position: center; */
 }
@@ -66,3 +66,4 @@ h3{
     color: blue;
     
 }
+
