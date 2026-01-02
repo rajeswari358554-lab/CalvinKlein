@@ -1,0 +1,227 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+}
+
+body {
+    background-color: brown;
+}
+
+#nav {
+    height: 50px;
+    width: 100%;
+    border: 1px solid white;
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+h1 {
+    color: white;
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    left: 20px;
+    top: 0;
+}
+
+#back {
+    text-decoration: none;
+    color: white;
+}
+
+h2 {
+    color: white;
+    position: absolute;
+    top: 8px;
+    left: 600px;
+}
+
+#card1 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 80px;
+    left: 40px;
+}
+
+div>img {
+    height: 220px;
+    width: 230px;
+    position: absolute;
+    left: 9px;
+    top: 5px;
+    z-index: 10;
+}
+
+div>i {
+    position: absolute;
+    left: 205px;
+    top: 15px;
+    z-index: 40;
+    color: black;
+    font-size: larger;
+    cursor: pointer;
+}
+
+div>.heading {
+    color: white;
+    text-align: center;
+}
+
+div>.amt {
+    color: white;
+    text-align: center;
+}
+
+div>.buy {
+    height: 30px;
+    width: 200px;
+    position: absolute;
+    left: 25px;
+    bottom: 42px;
+    z-index: 9999 !important;
+    /* Force high z-index */
+    pointer-events: auto !important;
+    /* Force clickable */
+    background-color: #660033;
+    color: white;
+    cursor: pointer;
+}
+
+div>.atc {
+    height: 30px;
+    width: 200px;
+    position: absolute;
+    left: 25px;
+    bottom: 10px;
+    background-color: #660033;
+    color: white;
+    cursor: pointer;
+}
+
+#card2 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 80px;
+    left: 380px;
+}
+
+#card3 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 80px;
+    left: 720px;
+}
+
+#card4 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 80px;
+    left: 1060px;
+}
+
+#card5 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 500px;
+    left: 40px;
+}
+
+#card6 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 500px;
+    left: 380px;
+}
+
+#card7 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 500px;
+    left: 720px;
+}
+
+#card8 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 500px;
+    left: 1060px;
+}
+
+#card9 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 920px;
+    left: 40px;
+}
+
+#card10 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 920px;
+    left: 380px;
+}
+
+#card11 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 920px;
+    left: 720px;
+}
+
+#card12 {
+    height: 350px;
+    width: 250px;
+    border: 1px solid white;
+    background-color: black;
+    box-shadow: 2px 2px 3px bisque;
+    position: absolute;
+    top: 920px;
+    left: 1060px;
+}

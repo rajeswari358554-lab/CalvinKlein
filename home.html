@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+    <link rel="stylesheet" href="./home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="icon" href="./picture/CKB.jpg" type="image/x-icon">
+</head>
+
+<body bgcolor="brown">
+    <div id="navbar1">
+
+        <!-- logo -->
+        <img alt="" class="brand-logo__img logo-white"
+            src="https://www.calvinklein.us/on/demandware.static/-/Sites-PVHCKUS-Library/default/dwcd59aeda/logo/CK-logo-Light.svg"
+            title="Calvin Klein" role="presentation" aria-hidden="true" tabindex="-1">
+
+        <!-- search bar -->
+        <input type="search" id="search-input" placeholder="search">
+        <a href="./wishlist.html"><i id="icon1" class="fa-solid fa-heart" title="Wishlist"></i></a>
+        <a href="./cart.html"><i id="icon2" class="fa-solid fa-cart-shopping" title="Cart"></i></a>
+        <a href="./login.html"><i id="icon3" class="fa-solid fa-user" title="Login"></i></a>
+
+        <script>
+            document.getElementById('search-input').addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    const query = this.value.toLowerCase().trim();
+                    if (query.includes('shirt') && !query.includes('t-shirt')) {
+                        window.location.href = './shirts.html';
+                    } else if (query.includes('t-shirt')) {
+                        window.location.href = './t-shirt.html';
+                    } else if (query.includes('jacket')) {
+                        window.location.href = './jackets.html';
+                    } else if (query.includes('bag')) {
+                        window.location.href = './bags.html';
+                    } else if (query.includes('jeans')) {
+                        window.location.href = './jeans.html';
+                    } else if (query.includes('cargo')) {
+                        window.location.href = './cargo.html';
+                    } else if (query.includes('shoe') || query.includes('sneaker') || query.includes('casual')) {
+                        window.location.href = './foodwear.html';
+                    } else if (query.includes('perfume')) {
+                        window.location.href = './perfumes.html';
+                    } else if (query.includes('accessory') || query.includes('sunglass')) {
+                        window.location.href = './accessory.html';
+                    } else {
+                        window.location.href = './all.html';
+                    }
+                }
+            });
+        </script>
+
+        <!-- navbar -->
+        <div id="navbar2">
+            <ul>
+                <a href="./all.html">
+                    <li>ALL</li>
+                </a>
+                <a href="./top.html">
+                    <li>TOP</li>
+                </a>
+                <a href="./bottom.html">
+                    <li>BOTTOM</li>
+                </a>
+                <a href="./accessory.html">
+                    <li>ACCESSORIES</li>
+                </a>
+                <a href="./foodwear.html">
+                    <li>FOOT WEAR</li>
+                </a>
+            </ul>
+        </div>
+
+        <!-- video -->
+
+        <video id="video1" autoplay="" loop="loop" muted="" defaultmuted="" playsinline=""
+            data-dt-src="//media1.calvinklein.com/images/20251028/HP/HP_JK_Hero_Desktopb.mp4"
+            data-mo-src="//media1.calvinklein.com/images/20251028/HP/HP_JK_Hero_Mobilec.mp4" class="content-img"
+            src="//media1.calvinklein.com/images/20251028/HP/HP_JK_Hero_Desktopb.mp4">
+        </video>
+        <h1 id="quotes1">HEAT UP. <br> GIVE CALVIN.</h1>
+        <h3 id="quotes2">Give them what they want. <br> The icons, outerwears and more.</h3>
+    </div>
+</body>
+
+</html>

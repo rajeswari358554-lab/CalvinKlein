@@ -1,0 +1,68 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: cursive;
+    background-image: url(./picture/ckjk4.jpg);
+    background-size: cover;
+    /* background-position: center; */
+}
+#box{
+    height: 350px;
+    width: 330px;
+    border: 2px solid black;
+    position: absolute;
+    top: 180px;
+    left: 530px;
+    text-align: center;
+    padding-top: 30px;
+    border-radius: 15px;
+    background: transparent;
+    justify-content: space-evenly;
+    box-shadow: 5px 5px 15px black;
+
+}
+#lab{
+   height: 37px;
+   
+}
+#inp{
+    height: 30px;
+    border-radius: 5px;
+}
+.cls{
+    background: transparent;
+}
+#btn{
+    height: 40px;
+    width: 95%;
+    background: transparent;
+    font-weight: bold;
+    border-radius: 100px;
+}
+#btn:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+h3{
+    background: transparent;
+}
+#login{
+    background: transparent;
+    color: black;
+    text-decoration: none;
+}
+#login:hover{
+    color: white;
+}
+#cancel{
+    background: transparent;
+    letter-spacing: 5px;
+    color: black;
+}
+#cancel:hover{
+    text-decoration: underline;
+    color: blue;
+    
+}

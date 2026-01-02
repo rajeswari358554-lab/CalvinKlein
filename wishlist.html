@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Wishlist</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <style>
+        body {
+            font-family: cursive;
+            padding: 20px;
+            background-color: brown;
+        }
+
+        #cart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .back-link {
+            display: block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+
+        /* Force text within the wishlist/cart items to be visible */
+        #wishlist-items-container h4,
+        #wishlist-items-container p,
+        #cart-items-container h4,
+        #cart-items-container p {
+            color: black !important;
+            margin: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="nav"
+        style="height: 50px; width: 100%; border: 1px solid white; background-color: black; position: absolute; top: 0; left: 0;">
+        <h1
+            style="color: white; font-family:'Courier New', Courier, monospace; position: absolute; left: 20px; top: 0; margin: 0; line-height: 50px;">
+            <a href="./home.html" id="back" style="text-decoration: none; color: white;"><</a>
+        </h1>
+        <h2
+            style="color: white; position: absolute; top: 0; left: 50%; transform: translateX(-50%); margin: 0; line-height: 50px;">
+            MY WISHLIST</h2>
+    </div>
+    <br><br><br>
+
+    <div id="cart-container">
+        <h1>Your Wishlist</h1>
+        <div id="wishlist-items-container">
+            <!-- Wishlist items will be injected here by JS -->
+        </div>
+    </div>
+
+    <script src="./cart.js"></script>
+</body>
+
+</html>

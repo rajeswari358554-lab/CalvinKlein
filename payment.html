@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - Secure Checkout</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+    <style>
+        body {
+            font-family: cursive;
+            background-color: brown;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .checkout-layout {
+            display: flex;
+            max-width: 1000px;
+            margin: 80px auto 40px;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        .payment-section {
+            flex: 2;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .summary-section {
+            flex: 1;
+            background: #fdfdfd;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            height: fit-content;
+            position: sticky;
+            top: 80px;
+        }
+
+        h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            color: #333;
+        }
+
+        .payment-methods {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+
+        .payment-method {
+            position: relative;
+            border: 2px solid #eee;
+            border-radius: 8px;
+            padding: 15px 10px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+            font-size: 0.9em;
+        }
+
+        .payment-method.active {
+            border-color: #660033;
+            background-color: #f0fff4;
+        }
+
+        .payment-method input {
+            position: absolute;
+            opacity: 0;
+        }
+
+        .payment-method i {
+            font-size: 1.5em;
+        }
+
+        .details-section {
+            display: none;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .details-section.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: cursive;
+        }
+
+        .summary-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .summary-total {
+            border-top: 2px solid #eee;
+            margin-top: 15px;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+            font-size: 1.2em;
+            color: #660033;
+        }
+
+        .btn-pay {
+            width: 100%;
+            padding: 15px;
+            background-color: #660033;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: bold;
+            font-family: cursive;
+            transition: background 0.3s;
+            margin-top: 20px;
+        }
+
+        .btn-pay:hover {
+            background-color: #660033;
+        }
+
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            opacity: 0.6;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-layout {
+                flex-direction: column;
+                margin-top: 100px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="nav"
+        style="height: 50px; width: 100%; border-bottom: 1px solid #444; background-color: black; position: fixed; top: 0; left: 0; z-index: 1000;">
+        <h1
+            style="color: white; font-family:'Courier New', Courier, monospace; position: absolute; left: 20px; top: 0; margin: 0; line-height: 50px;">
+            <a href="./cart.html" id="back" style="text-decoration: none; color: white;">
+                <</a>
+        </h1>
+        <h2
+            style="color: white; position: absolute; top: 0; left: 50%; transform: translateX(-50%); margin: 0; line-height: 50px; border:none;">
+            PAYMENT PAGE</h2>
+    </div>
+
+    <div class="checkout-layout">
+        <!-- Main Payment Column -->
+        <div class="payment-section">
+            <h2>Payment Method</h2>
+            <form id="payment-form">
+                <div class="payment-methods">
+                    <label class="payment-method active" id="label-card">
+                        <input type="radio" name="payment-mode" value="card" checked onchange="updateView()">
+                        <i class="fa-solid fa-credit-card" style="color: #007bff;"></i>
+                        Card
+                    </label>
+                    <label class="payment-method" id="label-upi">
+                        <input type="radio" name="payment-mode" value="upi" onchange="updateView()">
+                        <i class="fa-solid fa-mobile-screen-button" style="color: #28a745;"></i>
+                        UPI
+                    </label>
+                    <label class="payment-method" id="label-cod">
+                        <input type="radio" name="payment-mode" value="cod" onchange="updateView()">
+                        <i class="fa-solid fa-money-bill-wave" style="color: #ffc107;"></i>
+                        COD
+                    </label>
+                </div>
+
+                <div id="card-details" class="details-section active">
+                    <div class="form-group">
+                        <label>Name On Card</label>
+                        <input type="text" id="card-name" placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label>Card Number</label>
+                        <input type="text" id="card-number" placeholder="0000 0000 0000 0000">
+                    </div>
+                    <div style="display: flex; gap: 15px;">
+                        <div class="form-group" style="flex: 2;">
+                            <label>Expiry Date</label>
+                            <input type="text" id="card-expiry" placeholder="MM/YY">
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <label>CVV</label>
+                            <input type="number" id="card-cvv" placeholder="123">
+                        </div>
+                    </div>
+                </div>
+
+                <div id="upi-details" class="details-section">
+                    <div class="form-group">
+                        <label>UPI Address</label>
+                        <input type="text" id="upi-id" placeholder="yourname@upi">
+                    </div>
+                    <p style="font-size: 0.8em; color: #666;">Open your UPI app to approve the request.</p>
+                </div>
+
+                <div id="cod-details" class="details-section">
+                    <p style="text-align: center; color: #333; padding: 10px;">You will pay with cash when your package
+                        arrives.</p>
+                </div>
+
+                <button type="submit" class="btn-pay">Complete Purchase</button>
+            </form>
+
+            <div class="trust-badges">
+                <i class="fa-brands fa-cc-visa fa-2x"></i>
+                <i class="fa-brands fa-cc-mastercard fa-2x"></i>
+                <i class="fa-brands fa-cc-apple-pay fa-2x"></i>
+                <i class="fa-solid fa-shield-halved fa-2x"></i>
+            </div>
+        </div>
+
+        <!-- Sidebar Summary Column -->
+        <div class="summary-section">
+            <h2>Order Summary</h2>
+            <div id="order-items-list" style="max-height: 300px; overflow-y: auto; margin-bottom: 15px;">
+                <!-- Dynamically filled -->
+            </div>
+            <div class="summary-item">
+                <span>Subtotal</span>
+                <span id="subtotal">Rs.0</span>
+            </div>
+            <div class="summary-item">
+                <span>Shipping</span>
+                <span style="color: #28a745;">FREE</span>
+            </div>
+            <div class="summary-total">
+                <span>Total</span>
+                <span id="total-amount">Rs.0</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateView() {
+            const modes = document.getElementsByName('payment-mode');
+            let selected;
+            modes.forEach(m => {
+                const label = document.getElementById('label-' + m.value);
+                if (m.checked) {
+                    selected = m.value;
+                    label.classList.add('active');
+                } else {
+                    label.classList.remove('active');
+                }
+            });
+
+            // Toggle sections
+            document.querySelectorAll('.details-section').forEach(s => s.classList.remove('active'));
+            document.getElementById(selected + '-details').classList.add('active');
+
+            // Set required fields
+            document.querySelectorAll('input').forEach(i => i.required = false);
+            if (selected === 'card') {
+                document.getElementById('card-name').required = true;
+                document.getElementById('card-number').required = true;
+                document.getElementById('card-expiry').required = true;
+                document.getElementById('card-cvv').required = true;
+            } else if (selected === 'upi') {
+                document.getElementById('upi-id').required = true;
+            }
+        }
+
+        function loadOrderSummary() {
+            const cart = JSON.parse(localStorage.getItem('myCart')) || [];
+            const list = document.getElementById('order-items-list');
+            let total = 0;
+
+            list.innerHTML = '';
+            cart.forEach(item => {
+                const qty = item.quantity || 1;
+                const itemPrice = item.price * qty;
+                total += itemPrice;
+
+                list.innerHTML += `
+                    <div style="display:flex; gap:10px; margin-bottom:10px; align-items:center;">
+                        <img src="${item.image}" style="width:40px; height:50px; object-fit:cover; border-radius:4px;">
+                        <div style="flex:1;">
+                            <div style="font-size:0.85em; font-weight:bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; width:140px;">${item.name}</div>
+                            <div style="font-size:0.75em; color:#666;">Qty: ${qty}</div>
+                        </div>
+                        <div style="font-size:0.85em; font-weight:bold;">Rs.${itemPrice}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('subtotal').innerText = 'Rs.' + total;
+            document.getElementById('total-amount').innerText = 'Rs.' + total;
+        }
+
+        document.getElementById('payment-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('🎉 Payment Successful! Your order has been placed.');
+            localStorage.removeItem('myCart');
+            window.location.href = './home.html';
+        });
+
+        // Init
+        updateView();
+        loadOrderSummary();
+    </script>
+</body>
+
+</html>
