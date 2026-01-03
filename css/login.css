@@ -3,9 +3,12 @@
     margin: 0;
     box-sizing: border-box;
     font-family: cursive;
-    background-image: url(../picture/ckjk4.jpg);
+}
+body {
+    background-image: url("../picture/ckjk4.jpg");
     background-size: cover;
-    /* background-position: center; */
+    background-repeat: no-repeat;
+    background-position: center;
 }
 #box{
     height: 350px;
@@ -66,6 +69,7 @@ h3{
     color: blue;
     
 }
+
 
 
 
